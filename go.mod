@@ -129,8 +129,11 @@ require (
 	sigs.k8s.io/yaml v1.2.0 // indirect
 )
 
+require github.com/vishvananda/netlink v1.1.1-0.20210330154013-f5de75959ad5
+
 require (
 	github.com/cyberphone/json-canonicalization v0.0.0-20210303052042-6bc126869bf4 // indirect
+	github.com/vishvananda/netns v0.0.0-20210104183010-2eb08e3e575f // indirect
 	github.com/zmap/zcrypto v0.0.0-20220605182715-4dfcec6e9a8c // indirect
 	github.com/zmap/zlint v1.1.0 // indirect
 )
