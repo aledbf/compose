@@ -1176,7 +1176,7 @@ func (s *composeService) resolveOrCreateNetwork(ctx context.Context, n *types.Ne
 			createOpts.Options = make(map[string]string)
 		}
 
-		netIface, err := netlink.LinkByName("ceth0")
+		netIface, err := netlink.LinkByName("eth0")
 		if err == nil {
 			createOpts.Options["com.docker.network.driver.mtu"] = fmt.Sprintf("%v", netIface.Attrs().MTU)
 		}
