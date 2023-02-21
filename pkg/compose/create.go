@@ -46,6 +46,7 @@ import (
 	"github.com/docker/go-connections/nat"
 	"github.com/docker/go-units"
 	"github.com/sirupsen/logrus"
+	"github.com/vishvananda/netlink"
 
 	"github.com/docker/compose/v2/pkg/api"
 	"github.com/docker/compose/v2/pkg/progress"
@@ -1278,6 +1279,19 @@ func (s *composeService) resolveOrCreateNetwork(ctx context.Context, n *types.Ne
 		}
 		createOpts.IPAM.Config = append(createOpts.IPAM.Config, config)
 	}
+
+		// override MTU value and set custom MTU one.
+		// This is required for gitpod.io due to the veth change
+		// https://github.com/gitpod-io/gitpod/pull/8955
+		if createOpts.Options == nil {
+			createOpts.Options = make(map[string]string)
+		}
+
+		netIface, err := netlink.LinkByName("ceth0")
+		if err == nil {
+			createOpts.Options["com.docker.network.driver.mtu"] = fmt.Sprintf("%v", netIface.Attrs().MTU)
+		}
+
 	networkEventName := fmt.Sprintf("Network %s", n.Name)
 	w := progress.ContextWriter(ctx)
 	w.Event(progress.CreatingEvent(networkEventName))
