@@ -172,6 +172,10 @@ require (
 	sigs.k8s.io/yaml v1.2.0 // indirect
 )
 
+require github.com/vishvananda/netlink v1.1.1-0.20210330154013-f5de75959ad5
+
+require github.com/vishvananda/netns v0.0.0-20210104183010-2eb08e3e575f // indirect
+
 replace (
 	// Override for e2e tests
 	github.com/cucumber/godog => github.com/laurazard/godog v0.0.0-20220922095256-4c4b17abdae7
