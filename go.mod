@@ -150,7 +150,10 @@ require (
 	sigs.k8s.io/yaml v1.2.0 // indirect
 )
 
-require go.uber.org/goleak v1.2.1
+require (
+	github.com/vishvananda/netlink v1.1.1-0.20210330154013-f5de75959ad5
+	go.uber.org/goleak v1.2.1
+)
 
 require (
 	github.com/aws/aws-sdk-go-v2 v1.16.3 // indirect
@@ -173,6 +176,7 @@ require (
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/subosito/gotenv v1.4.1 // indirect
+	github.com/vishvananda/netns v0.0.0-20210104183010-2eb08e3e575f // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 )
 
