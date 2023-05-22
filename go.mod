@@ -191,5 +191,22 @@ require (
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )
 
-// Override for e2e tests
-replace github.com/cucumber/godog => github.com/laurazard/godog v0.0.0-20220922095256-4c4b17abdae7
+require github.com/vishvananda/netlink v1.1.1-0.20210330154013-f5de75959ad5
+
+require github.com/vishvananda/netns v0.0.0-20210104183010-2eb08e3e575f // indirect
+
+replace (
+	// Override for e2e tests
+	github.com/cucumber/godog => github.com/laurazard/godog v0.0.0-20220922095256-4c4b17abdae7
+
+	golang.org/x/oauth2 => golang.org/x/oauth2 v0.0.0-20221014153046-6fdb5e3db783
+
+	// For k8s dependencies, we use a replace directive, to prevent them being
+	// upgraded to the version specified in containerd, which is not relevant to the
+	// version needed.
+	// See https://github.com/docker/buildx/pull/948 for details.
+	// https://github.com/docker/buildx/blob/v0.9.1/go.mod#L62-L64
+	k8s.io/api => k8s.io/api v0.22.4
+	k8s.io/apimachinery => k8s.io/apimachinery v0.22.4
+	k8s.io/client-go => k8s.io/client-go v0.22.4
+)
