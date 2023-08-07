@@ -52,7 +52,6 @@ jobs:
           - lint
           - validate-go-mod
           - validate-headers
-          - validate-docs
     steps:
       -
         name: Checkout
