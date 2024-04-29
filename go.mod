@@ -59,6 +59,8 @@ require (
 	gotest.tools/v3 v3.5.1
 )
 
+require github.com/vishvananda/netlink v1.2.1-beta.2
+
 require (
 	dario.cat/mergo v1.0.0 // indirect
 	github.com/AdaLogics/go-fuzz-headers v0.0.0-20230811130428-ced1acdcaa24 // indirect
@@ -97,6 +99,7 @@ require (
 	github.com/go-openapi/jsonpointer v0.19.6 // indirect
 	github.com/go-openapi/jsonreference v0.20.2 // indirect
 	github.com/go-openapi/swag v0.22.3 // indirect
+	github.com/go-sql-driver/mysql v1.4.1 // indirect
 	github.com/gofrs/flock v0.8.1 // indirect
 	github.com/gogo/googleapis v1.4.1 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
@@ -114,6 +117,7 @@ require (
 	github.com/imdario/mergo v0.3.16 // indirect
 	github.com/in-toto/in-toto-golang v0.5.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
+	github.com/jinzhu/gorm v1.9.11 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51 // indirect
@@ -153,6 +157,7 @@ require (
 	github.com/tonistiigi/fsutil v0.0.0-20240301111122-7525a1af2bb5 // indirect
 	github.com/tonistiigi/units v0.0.0-20180711220420-6950e57a87ea // indirect
 	github.com/tonistiigi/vt100 v0.0.0-20230623042737-f9a4f7ef6531 // indirect
+	github.com/vishvananda/netns v0.0.4 // indirect
 	github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb // indirect
 	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
 	github.com/xeipuuv/gojsonschema v1.2.0 // indirect
@@ -190,4 +195,13 @@ require (
 	sigs.k8s.io/structured-merge-diff/v4 v4.4.1 // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
 	tags.cncf.io/container-device-interface v0.6.2 // indirect
+)
+
+replace (
+	// Override for e2e tests
+	github.com/cucumber/godog => github.com/laurazard/godog v0.0.0-20220922095256-4c4b17abdae7
+
+	// v1.2.1-beta.2 is the latest version, override to use v1.1.0 to avoid beta
+	// https://github.com/vishvananda/netlink/compare/v1.1.0...v1.2.1-beta.2
+	github.com/vishvananda/netlink => github.com/vishvananda/netlink v1.1.1-0.20210330154013-f5de75959ad5
 )
